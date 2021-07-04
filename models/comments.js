@@ -18,3 +18,5 @@ const comments = sequelize.define("Comments", {
         
     }
 })
+
+module.exports = comments;  

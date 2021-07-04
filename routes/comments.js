@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const Post = require('../models/post');
+const Comments = require('../models/comments');
 
 const router = Router();
 
@@ -10,16 +10,18 @@ router.use((req, res, next) => {
     next();
 });
 
-
-//Получение списка постов 
-router.get('/', async (req, res) => {
+router.get('/:postId', async (req, res) => {
     try {
-        const posts = await Post.findAll();
-        res.status(200).json(posts);
+        const comments = await Comments.findAll({
+            where: {
+                postId: req.params.postId
+            }
+        })
+        res.status(200).send(comments)
     } catch (err) {
         console.log(err);
         res.status(500).json({
-            message: 'Server Error'
+            message: req
         })
     }
 })
@@ -28,40 +30,16 @@ router.post('/', async (req, res) => {
 
     try {
         console.log(req.body)
-        const post = await Post.create({
-            title: req.body.title,
+        const post = await Comments.create({
+            id: req.body.id,
             body: req.body.body,
+            postId: req.body.postId
         })
         res.status(201).json({ post })
     } catch (err) {
         console.log(err);
         res.status(500).json({
             message: 'Server error'
-        })
-    }
-})
-
-
-//Изменение поста
-router.put('/:id', (req, res) => {
-    try {
-
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            message: 'Server Error'
-        })
-    }
-})
-
-//Удаление поста
-router.delete('/:id', (req, res) => {
-    try {
-
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            message: 'Server Error'
         })
     }
 })

@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 
 const sequelize = require('./utils/database');
 const blogRoutes = require('./routes/blog');
+const commentRoutes = require('./routes/comments');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 app.use('/api/blog', blogRoutes);
+app.use('/api/comments', commentRoutes);
 app.use(cors());
 
 
