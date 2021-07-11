@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
             body: req.body.body,
             postId: req.body.postId
         })
-        res.status(201).json({ post })
+        res.status(201).json(post)
     } catch (err) {
         console.log(err);
         res.status(500).json({
