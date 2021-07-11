@@ -5,9 +5,9 @@ const Sequelize = require('sequelize')
 // const PASSWORD = '6f8139f1';
 
 
-// const DB_NAME = 'blog';
-// const USER_NAME = 'admin';
-// const PASSWORD = '12345678';
+const DB_NAME = 'blog';
+const USER_NAME = 'admin';
+const PASSWORD = '12345678';
 
 // 12345678-Qwerty
 
