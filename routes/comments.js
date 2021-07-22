@@ -29,15 +29,13 @@ router.get('/:postId', async (req, res) => {
 router.post('/', async (req, res) => {
 
     try {
-        console.log(req.body)
         const post = await Comments.create({
             id: req.body.id,
             body: req.body.body,
             postId: req.body.postId
         })
-        res.status(201).json({ post })
+        res.status(201).json(post)
     } catch (err) {
-        console.log(err);
         res.status(500).json({
             message: 'Server error'
         })

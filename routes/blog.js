@@ -45,9 +45,16 @@ router.post('/', async (req, res) => {
 
 
 //Изменение поста
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
+        const post = await Post.findAll({
+            where: {
+                id: req.params.id
+            }
+        })
 
+        await post[0].update({body: req.body.body, title: req.body.title})
+        console.log('Successful edited');
     } catch (err) {
         console.log(err);
         res.status(500).json({

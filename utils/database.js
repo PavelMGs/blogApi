@@ -1,9 +1,5 @@
 const Sequelize = require('sequelize')
 
-// const DB_NAME = 'mg-blog-db-connection';
-// const USER_NAME = 'b54afa87289859';
-// const PASSWORD = '6f8139f1';
-
 
 const DB_NAME = 'blog';
 const USER_NAME = 'admin';
