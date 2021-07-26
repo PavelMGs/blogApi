@@ -13,7 +13,7 @@ const post = sequelize.define('Post', {
         allowNull: false
     },
     body: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT('long'),
         allowNull: false
     },
 })
